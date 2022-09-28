@@ -1,0 +1,19 @@
+mat-card{
+  width: 400px;
+  height: auto;
+  display: block;
+  vertical-align:middle;
+  text-align: center;
+  margin: 15em auto;
+  background-image: url("https://static.vecteezy.com/system/resources/previews/006/413/040/original/blue-gradient-pastle-soft-beautiful-abstract-background-you-can-use-this-background-for-your-content-like-as-technology-video-gaming-promotion-card-banner-sports-presentation-website-etc-vector.jpg");
+
+}
+mat-form-field {
+  display: block;
+  font-family: "DejaVu Math TeX Gyre", serif;
+}
+mat-card-title{
+  font-size: 30px;
+  font-family: "DejaVu Math TeX Gyre", serif;
+}
+

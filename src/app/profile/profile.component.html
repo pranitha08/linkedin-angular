@@ -1,0 +1,33 @@
+<div class="profile-form-flex">
+  <mat-card>
+    <mat-card-title>Add Details</mat-card-title>
+    <form #profileform="ngForm" (ngSubmit)="onSubmit()">
+      <mat-card-content>
+        <mat-form-field appearance="standard">
+          <input matInput placeholder="FirstName" type="text" class="form-control" id="firstname" name="firstname" [(ngModel)]="user.first_name" required #firstname="ngModel">
+        </mat-form-field>
+        <br/>
+        <mat-form-field appearance="standard">
+          <input type="text" class="form-control" id="lastname" matInput placeholder="LastName" name="LastName" [(ngModel)]="user.last_name" required #lastname="ngModel">
+        </mat-form-field>
+        <br/>
+        <mat-form-field appearance="standard">
+          <input type="date" class="form-control" id="dob" matInput placeholder="DOB" name="dob" [(ngModel)]="user.dob" required #dob="ngModel">
+        </mat-form-field>
+        <br/>
+        <mat-form-field appearance="standard">
+          <input type="text" class="form-control" id="contact" matInput placeholder="Contact No" name="contact" [(ngModel)]="user.contact_no" required #contact="ngModel">
+        </mat-form-field>
+        <br/>
+        <mat-form-field appearance="standard">
+          <input type="text" class="form-control" id="description" matInput placeholder="Description" name="description" [(ngModel)]="user.description"  #description="ngModel">
+        </mat-form-field>
+      </mat-card-content>
+      <mat-card-actions>
+        <div class="button-flex-container">
+          <button mat-raised-button color="primary">Next</button>
+        </div>
+      </mat-card-actions>
+    </form>
+  </mat-card>
+</div>

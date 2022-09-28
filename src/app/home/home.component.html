@@ -1,0 +1,102 @@
+<div style="background-color: lavenderblush">
+  <mat-toolbar>
+  <span class="nav-bar"><b>Welcome to your Linkedin Profile</b></span>
+  <span class = "filler"></span>
+  <a mat-flat-button href="#">Logout</a>
+</mat-toolbar>
+
+<mat-card>
+  <mat-card-content>
+  <mat-card-title><b>HELLO  {{details.first_name | uppercase}} {{details.last_name | uppercase}}!</b></mat-card-title>
+    <h3>Mail Id: {{user.email}}</h3>
+    <h3>Contact No: {{details.contact_no}}</h3>
+    <h3>Date Of Birth: {{details.dob| date :  "dd.MM.y" }}</h3>
+    <h3>Description: {{details.description}}</h3>
+    <div class="button-flex-container" align="right">
+      <button mat-raised-button color="primary" (click)="edit(details.id)">Edit Profile</button>
+    </div>
+  </mat-card-content>
+</mat-card>
+
+<mat-card>
+  <mat-card-content>
+    <mat-card-title><b>ADDRESS:</b></mat-card-title>
+    <h3>{{address.street | uppercase}}</h3>
+    <h3>{{address.city | uppercase}}</h3>
+    <h3>{{address.state | uppercase}}</h3>
+    <h3>{{address.country | uppercase}}</h3>
+    <h3>ZIP CODE: {{address.pin_code}}</h3>
+    <div class="button-flex-container" align="right">
+      <button mat-raised-button color="primary" (click)="editAddress(address.id)">Edit Address</button>
+    </div>
+  </mat-card-content>
+</mat-card>
+
+<div class="list" *ngIf="education">
+  <mat-card>
+    <mat-card-title><b>Educations:</b></mat-card-title>
+    <ul>
+      <li *ngFor="let edu of education">
+        <div class="card">
+          <h3 class="title">{{edu.school}}</h3>
+          <h3 class="title">{{edu.degree}}, {{edu.field}}</h3>
+          <h3 class="title">Grade: {{edu.grade}}</h3>
+          <h3 class="title">{{edu.start_date | date :  "dd.MM.y" }} - {{edu.end_date | date :  "dd.MM.y" }}</h3>
+          <h3 class="title">{{edu.location}}</h3>
+          <h3 class="title">{{edu.description}}</h3>
+        </div>
+          <div class="action_btn" align="end">
+            <button name="submit" class="btn btn-primary" type="submit" value="Save" (click)="editEducation(edu.id)">Edit</button>
+            <button name="submit" class="btn btn-danger" type="submit" value="Cancel" (click)="deleteEducation(edu.id)">Delete</button>
+          </div>
+        <hr>
+      </li>
+    </ul>
+    <button type="button" class="btn btn-primary" (click)="addEducation()">Add Education</button>
+  </mat-card>
+</div>
+
+<div class="list" *ngIf="experience">
+  <mat-card>
+    <mat-card-title><b>Experiences:</b></mat-card-title>
+    <ul>
+      <li *ngFor="let exp of experience">
+        <div class="card">
+          <h3 class="title">Company: {{exp.company_name}}</h3>
+          <h3 class="title">Role: {{exp.position}}</h3>
+          <h3 class="title">{{exp.start_date| date :  "dd.MM.y" }} - {{exp.end_date| date :  "dd.MM.y" }}</h3>
+          <h3 class="title">{{exp.location}}</h3>
+          <h3 class="title">{{exp.description}}</h3>
+        </div>
+        <div class="action_btn" align="end">
+          <button name="submit" class="btn btn-primary" type="submit" value="Save" (click)="editExperience(exp.id)">Edit</button>
+          <button name="submit" class="btn btn-danger" type="submit" value="Cancel" (click)="deleteExperience(exp.id)">Delete</button>
+        </div>
+        <hr>
+      </li>
+    </ul>
+    <button type="button" class="btn btn-primary" (click)="addExperience()">Add Experience</button>
+  </mat-card>
+</div>
+
+
+<div class="list" *ngIf="skill">
+  <mat-card>
+    <mat-card-title><b>Skills:</b></mat-card-title>
+    <ul>
+      <li *ngFor="let x of skill">
+        <div class="card">
+          <h3 class="title">{{x.skill_name}}</h3>
+          <i></i>
+          <mat-icon [fontIcon]="'mat:delete'" color="primary"></mat-icon>
+        </div>
+        <div class="action_btn">
+          <button name="submit" class="btn btn-danger" type="submit" value="Cancel" (click)="deleteSkill(x.id)">Delete</button>
+        </div>
+        <hr>
+      </li>
+    </ul>
+    <button type="button" class="btn btn-primary" (click)="addSkill()">Add Skills</button>
+  </mat-card>
+</div>
+</div>

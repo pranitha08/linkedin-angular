@@ -1,0 +1,19 @@
+<div class="skill-form-flex">
+<mat-card>
+  <mat-card-title>Add Skills</mat-card-title>
+  <h4>Mention your top skills</h4>
+  <form #skillsform="ngForm" (ngSubmit)="onSubmit()">
+    <mat-card-content>
+      <mat-form-field appearance="fill">
+        <input matInput placeholder="Skill Name" type="text" class="form-control" id="skill_name" name="skill_name" [(ngModel)]="skill.skill_name" required #skills="ngModel">
+      </mat-form-field>
+      <br/>
+    </mat-card-content>
+    <mat-card-actions>
+      <div class="button-flex-container">
+        <button mat-raised-button color="primary">Submit</button>
+      </div>
+    </mat-card-actions>
+  </form>
+</mat-card>
+</div>

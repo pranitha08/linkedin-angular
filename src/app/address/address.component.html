@@ -1,0 +1,37 @@
+<div class="center">
+  <div class="container center">
+    <div class="vertical-center">
+      <mat-card>
+        <form  [formGroup]="addressForm" (ngSubmit)="onSubmit()">
+          <h2>Address Form</h2>
+          <mat-form-field appearance="fill">
+            <input placeholder="Street" name="street" formControlName="street" matInput>
+          </mat-form-field>
+          <br>
+          <mat-form-field appearance="fill">
+<!--            <mat-label>City</mat-label>-->
+            <input placeholder="city" name="city" formControlName="city" matInput>
+          </mat-form-field>
+          <br>
+          <mat-form-field appearance="fill">
+<!--            <mat-label>State</mat-label>-->
+            <input placeholder="State"  formControlName="state" name="state" matInput>
+          </mat-form-field>
+          <br>
+          <mat-form-field appearance="fill">
+<!--            <mat-label>Country</mat-label>-->
+            <input placeholder="Country" formControlName="country" name="country" matInput>
+          </mat-form-field>
+          <br>
+          <mat-form-field appearance="fill">
+<!--            <mat-label>ZipCode</mat-label>-->
+            <input placeholder="Zip Code" formControlName="pin_code" name="pin_code" matInput>
+          </mat-form-field>
+          <br>
+          <button mat-raised-button color="primary" type="submit">Submit</button>
+          <br>
+        </form>
+      </mat-card>
+    </div>
+  </div>
+</div>

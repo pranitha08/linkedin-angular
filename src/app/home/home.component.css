@@ -1,0 +1,59 @@
+ .mat-raised-button {
+ border-radius: 4px;
+ }
+
+ .mat-flat-button{
+   background-color: lightblue;
+ }
+.filler {
+  flex: 1 1 auto;
+}
+
+.mat-toolbar{
+  margin-right: 30px;
+  font-size: 20px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background-color: black;
+  color: white ;
+}
+
+mat-card{
+  background-color: lavenderblush;
+  width: 800px;
+  height: auto;
+  display: block;
+  vertical-align:middle;
+  margin: 5em auto;
+  background-image: url("https://static.vecteezy.com/system/resources/previews/006/413/040/original/blue-gradient-pastle-soft-beautiful-abstract-background-you-can-use-this-background-for-your-content-like-as-technology-video-gaming-promotion-card-banner-sports-presentation-website-etc-vector.jpg");
+}
+mat-form-field {
+  display: block;
+  font-family: "DejaVu Math TeX Gyre", serif;
+}
+
+.mat-card-title{
+  font-family: "Courier 10 Pitch";
+  font-size: 27px;
+}
+
+
+h3 {
+  font-size: 16px;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin: 20px 8px 10px 8px;
+}
+
+.btn {
+  width: 150px;
+  margin-right: 10px;
+  display: inline;
+}
+
+.welcome-form{
+  background-color: lavender;
+}
+
+.button-flex-container{
+  position: relative;
+}

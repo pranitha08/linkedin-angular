@@ -1,0 +1,26 @@
+<mat-card>
+  <mat-card-title>signup</mat-card-title>
+  <form #signupform="ngForm" (ngSubmit)="registerUser()">
+    <mat-card-content>
+      <mat-form-field appearance="standard">
+        <input matInput placeholder="Email" type="email" class="form-control" id="email" name="email" [(ngModel)]="user.email" required #email="ngModel">
+      </mat-form-field>
+      <br/>
+      <mat-form-field appearance="standard">
+        <input matInput placeholder="Password" type="password" class="form-control" id="password" name="password" [(ngModel)]="user.password" required #password="ngModel">
+      </mat-form-field>
+      <br/>
+      <mat-form-field appearance="standard">
+        <input matInput placeholder="Confirm Password" type="password" class="form-control" id="cpassword"  name="cpassword" [(ngModel)]="user.cpassword" required #cpassword="ngModel">
+      </mat-form-field>
+      <br/>
+    </mat-card-content>
+    <mat-card-actions>
+      <div class="button-flex-container">
+        <button mat-raised-button color="primary">Next</button>
+      </div>
+    </mat-card-actions>
+    <p class="mb-5 pb-lg-2" style="color: #393f81;">Already had an account?
+      <a (click)="gotoLogin()" style="color: #393f81;">Login here</a></p>
+  </form>
+</mat-card>

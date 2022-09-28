@@ -1,0 +1,55 @@
+<div class="center">
+  <div class="container center">
+    <div class="vertical-center">
+      <mat-card>
+        <form  [formGroup]="educationForm" (ngSubmit)="onSubmit()">
+          <h2>Education Form</h2>
+          <mat-card-content>
+          <mat-form-field appearance="fill">
+<!--            <mat-label>School</mat-label>-->
+            <input placeholder="School" name="school" formControlName="school" matInput>
+          </mat-form-field>
+          <br>
+          <mat-form-field appearance="fill">
+<!--            <mat-label>Location</mat-label>-->
+            <input placeholder="Location" name="location" formControlName="location" matInput>
+          </mat-form-field>
+          <br>
+          <mat-form-field appearance="fill">
+<!--            <mat-label>Degree</mat-label>-->
+            <input placeholder="Degree" formControlName="degree" name="degree" matInput>
+          </mat-form-field>
+          <br>
+          <mat-form-field appearance="fill">
+<!--            <mat-label>Field</mat-label>-->
+            <input placeholder="Field" formControlName="field" name="field" matInput required>
+          </mat-form-field>
+          <br>
+          <mat-form-field appearance="fill">
+<!--            <mat-label>Grade</mat-label>-->
+            <input placeholder="Grade" formControlName="grade" name="grade" matInput>
+          </mat-form-field>
+          <br>
+          <mat-form-field appearance="fill">
+<!--            <mat-label>Description</mat-label>-->
+            <input placeholder="Description" formControlName="description" name="description" matInput>
+          </mat-form-field>
+          <br>
+          <mat-form-field appearance="fill">
+            <mat-label>Start Date</mat-label>
+            <input placeholder="Start Date" type="date" formControlName="start_date" name="start_date" matInput>
+          </mat-form-field>
+          <br>
+          <mat-form-field appearance="fill">
+            <mat-label>End Date</mat-label>
+            <input placeholder="End Date" type="date" formControlName="end_date" name="end_date" matInput>
+          </mat-form-field>
+          <br>
+          <button mat-raised-button color="primary" type="submit">Submit</button>
+          <br>
+            </mat-card-content>
+        </form>
+      </mat-card>
+    </div>
+  </div>
+</div>

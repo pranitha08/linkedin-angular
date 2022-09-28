@@ -1,0 +1,45 @@
+<div class="center">
+  <div class="container center">
+    <div class="vertical-center">
+      <mat-card>
+        <form  [formGroup]="experienceForm" (ngSubmit)="onSubmit()">
+          <h2>Experience Form</h2>
+          <mat-card-content>
+            <mat-form-field appearance="fill">
+<!--              <mat-label>Company Name</mat-label>-->
+              <input placeholder="Company Name" name="company_name" formControlName="company_name" matInput>
+            </mat-form-field>
+            <br>
+            <mat-form-field appearance="fill">
+<!--              <mat-label>Location</mat-label>-->
+              <input placeholder="Location" name="location" formControlName="location" matInput>
+            </mat-form-field>
+            <br>
+            <mat-form-field appearance="fill">
+<!--              <mat-label>Position</mat-label>-->
+              <input placeholder="Position" formControlName="position" name="position" matInput>
+            </mat-form-field>
+            <br>
+            <mat-form-field appearance="fill">
+<!--              <mat-label>Description</mat-label>-->
+              <input placeholder="Description" formControlName="description" name="description" matInput>
+            </mat-form-field>
+            <br>
+            <mat-form-field appearance="fill">
+<!--              <mat-label>Start Date</mat-label>-->
+              <input placeholder="Start Date" type="date" formControlName="start_date" name="start_date" matInput>
+            </mat-form-field>
+            <br>
+            <mat-form-field appearance="fill">
+<!--              <mat-label>End Date</mat-label>-->
+              <input placeholder="End Date" type="date" formControlName="end_date" name="end_date" matInput>
+            </mat-form-field>
+            <br>
+            <button mat-raised-button color="primary" type="submit">Submit</button>
+            <br>
+          </mat-card-content>
+        </form>
+      </mat-card>
+    </div>
+  </div>
+</div>
