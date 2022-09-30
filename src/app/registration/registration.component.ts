@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {User} from "../user";
 import {RegistrationService} from "../services/registration.service";
 import {ActivatedRoute, Router} from "@angular/router";
-
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 
 
 @Component({
@@ -11,25 +10,29 @@ import {ActivatedRoute, Router} from "@angular/router";
   styleUrls: ['./registration.component.css']
 })
 export class RegistrationComponent implements OnInit {
+  registrationForm = new FormGroup({
+    id: new FormControl('', Validators.required),
+    email: new FormControl('',Validators.required),
+    password:new FormControl('',Validators.required),
+    cpassword:new FormControl('',Validators.required)
+  })
 
-  user=new User();
-
+  userid:number;
   constructor(
-    private _service : RegistrationService,
-    private _router : Router,
-    private _route : ActivatedRoute
+    private registrationService : RegistrationService,
+    private router : Router,
+    private route : ActivatedRoute
   ) { }
 
-  // @ts-ignore
   registerUser() {
-    if(this.user.email==null || this.user.password==null || this.user.cpassword==null){
+    const request = this.registrationForm.getRawValue();
+    if(request.email==null || request.password==null || request.cpassword==null){
       alert("please Fill all the fields");
     }
-    else if(this.user.password==this.user.cpassword) {
-      this._service.registerUserFromRemote(this.user).subscribe(data => {
+    else if(request.password==request.cpassword) {
+      this.registrationService.registerUserFromRemote(request).subscribe(data => {
         alert("Successfully User is registerd you can add details")
-        console.log(data);
-        this._router.navigateByUrl(`profile/${data.id}`)
+        this.router.navigateByUrl(`profile/${data.id}`)
       }, error => alert("Sorry User not register"));
     }
     else{
@@ -38,9 +41,9 @@ export class RegistrationComponent implements OnInit {
   }
 
   gotoLogin(){
-    this._router.navigate(["/login"])
+    this.router.navigate(["/login"])
   }
   ngOnInit(): void {
-    this.user.userid=this._route.snapshot.queryParams['id'];
+    this.userid=this.route.snapshot.queryParams['id'];
   }
 }

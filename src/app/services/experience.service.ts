@@ -9,8 +9,8 @@ import {Experience} from "../experience";
 export class ExperienceService {
 
   constructor(private _http: HttpClient) { }
-  public addExperience(id: any, user: any): Observable<any> {
-    return this._http.post<any>(`http://localhost:8080/experience/post/${id}`, user)
+  public addExperience(id: any, experience: any): Observable<any> {
+    return this._http.post<any>(`http://localhost:8080/experience/post/${id}`, experience)
   }
 
   deleteExperience(id: number) {
@@ -20,8 +20,8 @@ export class ExperienceService {
     return this._http.get<any>(`http://localhost:8080/experience/get/${id}`);
   }
 
-  editExperience(id: number, user: any):Observable<any> {
-    return this._http.put<any>(`http://localhost:8080/experience/put/${id}`,user);
+  editExperience(id: number, experience: any):Observable<any> {
+    return this._http.put<any>(`http://localhost:8080/experience/put/${id}`,experience);
   }
 
 }

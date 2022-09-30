@@ -9,10 +9,10 @@ import {User} from "../user";
 export class RegistrationService {
 
   constructor(private _http:HttpClient) { }
-  public loginUserfromRemote(user :User):Observable<any>{
+  public loginUserfromRemote(user :any):Observable<any>{
     return this._http.post<any>("http://localhost:8080/user/login",user)
   }
-  public registerUserFromRemote(user :User):Observable<any>{
+  public registerUserFromRemote(user :any):Observable<any>{
     return this._http.post<any>("http://localhost:8080/user/register",user)
   }
 }

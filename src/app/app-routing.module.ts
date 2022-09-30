@@ -5,10 +5,10 @@ import {ProfileComponent} from "./profile/profile.component";
 import {RegistrationComponent} from "./registration/registration.component";
 import {AddressComponent} from "./address/address.component";
 import {HomeComponent} from "./home/home.component";
-import {EditprofileComponent} from "./edit/editprofile/editprofile.component";
+import {EditprofileComponent} from "./editprofile/editprofile.component";
 import {EducationComponent} from "./education/education.component";
 import {ExperienceComponent} from "./experience/experience.component";
-import {SkillsComponent} from "./skills/skills.component";
+import {SkillComponent} from "./skill/skill.component";
 
 const routes: Routes = [
   {path: '',component:LoginComponent},
@@ -20,7 +20,7 @@ const routes: Routes = [
   {path: 'address/:id/:id2',component: AddressComponent},
   {path: 'education/:id/:id2',component:EducationComponent},
   {path: 'experience/:id/:id2',component:ExperienceComponent},
-  {path: 'skill/:id',component:SkillsComponent}
+  {path: 'skill/:id',component:SkillComponent}
 ];
 
 @NgModule({

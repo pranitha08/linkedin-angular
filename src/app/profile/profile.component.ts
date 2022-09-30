@@ -1,7 +1,7 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component,OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {ProfileService} from "../services/profile.service";
-import {Details} from "../details";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-profile',
@@ -9,33 +9,36 @@ import {Details} from "../details";
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-
-  user:Details=new Details();
-  @Input() userid:number;
+  profileForm = new FormGroup({
+    id: new FormControl('', Validators.required),
+    first_name: new FormControl('',Validators.required),
+    last_name: new FormControl('',Validators.required),
+    dob: new FormControl('',Validators.required),
+    contact_no: new FormControl('',Validators.required),
+    description: new FormControl('',Validators.required)
+  })
+  userid:number;
 
   constructor(
-    private _service : ProfileService,
-    private _router : Router,
-    private _route: ActivatedRoute
+    private profileService : ProfileService,
+    private router : Router,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
-    this.userid=this._route.snapshot.params['id'];
+    this.userid=this.route.snapshot.params['id'];
   }
 
   onSubmit(){
-    if(this.user.first_name==null || this.user.last_name==null){
+    const request = this.profileForm.getRawValue();
+    if(request.first_name==null || request.last_name==null){
       alert("please Fill all the fields");
     }
-    console.log(this.user);
-    console.log(this.userid);
-    this._service.addProfile(this.userid,this.user).subscribe(data => {
-      console.log(data);
-        this._router.navigateByUrl(`address/${data.id}/0`);
+    this.profileService.addProfile(this.userid,request).subscribe(data => {
+        this.router.navigateByUrl(`address/${data.id}/0`);
       }, error => {
-        alert("Registration Failed");
+        alert("Couldn't Add the details");
       }
     );
   }
-
 }

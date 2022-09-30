@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {RegistrationService} from "../services/registration.service";
 import {Router} from "@angular/router";
-import {User} from "../user";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-login',
@@ -10,26 +10,29 @@ import {User} from "../user";
 })
 export class LoginComponent implements OnInit {
 
-  user=new User();
-  msg='';
-  constructor(private _service : RegistrationService,private _router : Router) { }
+  loginForm = new FormGroup({
+    id: new FormControl('', Validators.required),
+    email: new FormControl('',Validators.required),
+    password:new FormControl('',Validators.required)
+  })
+  constructor(private registrationService : RegistrationService,private router : Router) { }
 
   ngOnInit(): void {
   }
 
   loginUser(){
-    this._service.loginUserfromRemote(this.user).subscribe(data=>{
+    const request = this.loginForm.getRawValue();
+    this.registrationService.loginUserfromRemote(request).subscribe(data=>{
       alert("Successfully User is logged in")
       console.log(data);
-      this._router.navigateByUrl(`welcome/${data.id}`)
+      this.router.navigateByUrl(`welcome/${data.id}`)
 
     },error=>{
       alert("Sorry User not logged in")
-      this.msg="Bad Credentials, please enter valid mail and password";
     });
   }
 
   gotoRegistration(){
-    this._router.navigate(["/registration"])
+    this.router.navigate(["/registration"])
   }
 }

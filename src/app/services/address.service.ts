@@ -10,8 +10,8 @@ export class AddressService {
 
   constructor(private _http: HttpClient) {
   }
-  public addAddress(id: any, user: any): Observable<any> {
-    return this._http.post<any>(`http://localhost:8080/address/post/${id}`, user)
+  public addAddress(id: any, address: any): Observable<any> {
+    return this._http.post<any>(`http://localhost:8080/address/post/${id}`, address)
   }
 
   getAddress(userid: any):Observable<any> {

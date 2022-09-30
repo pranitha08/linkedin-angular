@@ -1,5 +1,4 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Education} from "../education";
 import {ActivatedRoute, Router} from "@angular/router";
 import {EducationService} from "../services/education.service";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
@@ -10,7 +9,6 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
   styleUrls: ['./education.component.css']
 })
 export class EducationComponent implements OnInit {
-
   educationForm = new FormGroup({
     id: new FormControl('', Validators.required),
     school: new FormControl('',Validators.required),
@@ -23,43 +21,40 @@ export class EducationComponent implements OnInit {
     description: new FormControl('',Validators.required)
   })
 
-  userid:number;
-  eduid:number;
+  userId:number;
+  eduId:number;
 
   constructor(
-    private _service : EducationService,
-    private _router : Router,
-    private _route: ActivatedRoute
+    private educationService : EducationService,
+    private router : Router,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
-    this.userid=this._route.snapshot.params['id'];
-    this.eduid=this._route.snapshot.params['id2'];
-    if(this.eduid != 0) {
-      this._service.getEducation(this.eduid).subscribe(data => {
+    this.userId=this.route.snapshot.params['id'];
+    this.eduId=this.route.snapshot.params['id2'];
+    if(this.eduId != 0) {
+      this.educationService.getEducation(this.eduId).subscribe(data => {
         this.educationForm.patchValue(data);
-        console.log(data);
       });
     }
   }
 
   onSubmit(){
     const request = this.educationForm.getRawValue();
-    if(this.eduid==0){
-      this._service.addEducation(this.userid,request).subscribe(data => {
-          console.log(data);
-          console.log(this.userid);
-          this._router.navigateByUrl(`welcome/${this.userid}`);
+    if(this.eduId==0){
+      this.educationService.addEducation(this.userId,request).subscribe(data => {
+          this.router.navigateByUrl(`welcome/${this.userId}`);
         }, error => {
-          alert("Registration Failed");
+          alert("Couldn't Add the details");
         }
       );
     }
     else{
-      this._service.editEducation(this.eduid,request).subscribe(data => {
-        this._router.navigateByUrl(`welcome/${this.userid}`);
+      this.educationService.editEducation(this.eduId,request).subscribe(data => {
+        this.router.navigateByUrl(`welcome/${this.userId}`);
       }, error => {
-        alert("Failed");
+        alert("Couldn't Add the details");
       });
     }
   }

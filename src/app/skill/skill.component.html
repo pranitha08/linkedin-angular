@@ -1,0 +1,19 @@
+<div class="center">
+  <div class="container center">
+    <div class="vertical-center">
+      <mat-card>
+        <form  [formGroup]="skillForm" (ngSubmit)="onSubmit()">
+          <h2>Skill Form</h2>
+          <h4>Mention your top skills</h4>
+          <mat-form-field appearance="fill">
+            <input placeholder="Skill Name" name="skill_name" formControlName="skill_name" matInput>
+          </mat-form-field>
+          <br>
+          <button mat-raised-button color="primary" type="submit">Submit</button>
+          <br>
+        </form>
+      </mat-card>
+    </div>
+  </div>
+</div>
+

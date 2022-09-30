@@ -10,8 +10,8 @@ import {Address} from "../address";
 export class EducationService {
 
   constructor(private _http: HttpClient) { }
-  public addEducation(id: any, user: any): Observable<any> {
-    return this._http.post<any>(`http://localhost:8080/education/post/${id}`, user)
+  public addEducation(id: any, education: any): Observable<any> {
+    return this._http.post<any>(`http://localhost:8080/education/post/${id}`, education)
   }
   deleteEducation(id: number) {
     return this._http.delete(`http://localhost:8080/education/${id}`);
@@ -20,8 +20,8 @@ export class EducationService {
     return this._http.get<any>(`http://localhost:8080/education/get/${id}`);
   }
 
-  editEducation(id: number, user: any):Observable<any> {
-    return this._http.put<any>(`http://localhost:8080/education/put/${id}/`,user);
+  editEducation(id: number, education: any):Observable<any> {
+    return this._http.put<any>(`http://localhost:8080/education/put/${id}/`,education);
   }
 
 }

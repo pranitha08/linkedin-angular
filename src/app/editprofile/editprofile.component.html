@@ -2,22 +2,22 @@
   <div class="container center">
     <div class="vertical-center">
       <mat-card>
-        <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+        <form [formGroup]="profileForm" (ngSubmit)="editUser(userid)">
           <h2>Edit Details</h2>
           <mat-form-field appearance="fill">
-            <input placeholder="First name" name="first_name" formControlName="first_name" matInput required>
+            <input placeholder="First name" name="first_name" formControlName="first_name" matInput>
           </mat-form-field>
           <br>
           <mat-form-field appearance="fill">
-            <input placeholder="Last Name" name="last_name" formControlName="last_name" matInput required>
+            <input placeholder="Last Name" name="last_name" formControlName="last_name" matInput>
           </mat-form-field>
           <br>
           <mat-form-field appearance="fill">
-            <input type="date" placeholder="DOB"  formControlName="dob" name="dob" matInput required>
+            <input type="date" placeholder="DOB"  formControlName="dob" name="dob" matInput>
           </mat-form-field>
           <br>
           <mat-form-field appearance="fill">
-            <input placeholder="Contact No" formControlName="contact_no" name="contact_no" matInput required>
+            <input placeholder="Contact No" formControlName="contact_no" name="contact_no" matInput>
           </mat-form-field>
           <br>
           <mat-form-field appearance="fill">

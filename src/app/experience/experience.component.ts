@@ -1,6 +1,5 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component,OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
-import {Experience} from "../experience";
 import {ExperienceService} from "../services/experience.service";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 
@@ -19,47 +18,41 @@ export class ExperienceComponent implements OnInit {
     end_date: new FormControl('',Validators.required),
     description: new FormControl('',Validators.required)
   })
-  experience:Experience=new Experience();
-  userid:number;
-  expid:number;
+  userId:number;
+  expId:number;
 
   constructor(
-    private _service : ExperienceService,
-    private _router : Router,
-    private _route: ActivatedRoute
+    private experienceService : ExperienceService,
+    private router : Router,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
-    this.userid = this._route.snapshot.params['id'];
-    this.expid = this._route.snapshot.params['id2'];
-    if (this.expid != 0) {
-      this._service.getExperience(this.expid).subscribe(data => {
+    this.userId = this.route.snapshot.params['id'];
+    this.expId = this.route.snapshot.params['id2'];
+    if (this.expId != 0) {
+      this.experienceService.getExperience(this.expId).subscribe(data => {
         this.experienceForm.patchValue(data);
-        console.log(data);
       });
     }
   }
 
   onSubmit(){
     const request = this.experienceForm.getRawValue();
-    if(this.expid==0){
-      this._service.addExperience(this.userid,request).subscribe(data => {
-          console.log(data);
-          console.log(this.userid);
-          this._router.navigateByUrl(`welcome/${this.userid}`);
+    if(this.expId==0){
+      this.experienceService.addExperience(this.userId,request).subscribe(data => {
+          this.router.navigateByUrl(`welcome/${this.userId}`);
         }, error => {
-          alert("Registration Failed");
+          alert("Couldn't add the details");
         }
       );
     }
     else{
-      this._service.editExperience(this.expid,request).subscribe(data => {
-        this._router.navigateByUrl(`welcome/${this.userid}`);
+      this.experienceService.editExperience(this.expId,request).subscribe(data => {
+        this.router.navigateByUrl(`welcome/${this.userId}`);
       }, error => {
-        alert("Failed");
+        alert("Couldn't Add the details");
       });
     }
-
   }
-
 }

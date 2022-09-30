@@ -1,5 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {Address} from "../address";
+import {Component,OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {AddressService} from "../services/address.service";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
@@ -20,23 +19,21 @@ export class AddressComponent implements OnInit {
     country: new FormControl('',Validators.required)
   })
 
-  address:Address=new Address();
   userid:number;
   address_id:number;
 
   constructor(
-    private _service : AddressService,
-    private _router : Router,
-    private _route: ActivatedRoute
+    private addressService : AddressService,
+    private router : Router,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
-    this.userid=this._route.snapshot.params['id'];
-    this.address_id=this._route.snapshot.params['id2'];
+    this.userid=this.route.snapshot.params['id'];
+    this.address_id=this.route.snapshot.params['id2'];
     if(this.address_id!=0){
-      this._service.getAddress(this.userid).subscribe(data => {
+      this.addressService.getAddress(this.userid).subscribe(data => {
           this.addressForm.patchValue(data);
-          console.log(data);
         }, error => {
           console.log(error);
         }
@@ -45,24 +42,20 @@ export class AddressComponent implements OnInit {
   }
 
   onSubmit(){
-    console.log(this.address_id);
     const request = this.addressForm.getRawValue();
-    console.log(request);
     if(this.address_id==0){
-      this._service.addAddress(this.userid,request).subscribe(data => {
-          console.log(data);
-          this._router.navigateByUrl(`login`);
+      this.addressService.addAddress(this.userid,request).subscribe(data => {
+          this.router.navigateByUrl(`login`);
         }, error => {
-          alert("Registration Failed");
+          alert("Adding address Failed");
         }
       );
     }
     else{
-      this._service.putAddress(this.address_id, request).subscribe(data2 => {
-          console.log(data2);
-          this._router.navigateByUrl(`welcome/${this.userid}`);
+      this.addressService.putAddress(this.address_id, request).subscribe(data2 => {
+          this.router.navigateByUrl(`welcome/${this.userid}`);
         }, error => {
-          alert("Address Failed");
+          alert("Adding address Failed");
         }
       );
     }

@@ -15,11 +15,12 @@ import {MatButtonModule} from "@angular/material/button";
 import { AddressComponent } from './address/address.component';
 import { HomeComponent } from './home/home.component';
 import {MatToolbarModule} from "@angular/material/toolbar";
-import { EditprofileComponent } from './edit/editprofile/editprofile.component';
+import { EditprofileComponent } from './editprofile/editprofile.component';
 import { EducationComponent } from './education/education.component';
 import { ExperienceComponent } from './experience/experience.component';
-import { SkillsComponent } from './skills/skills.component';
+import { SkillComponent } from './skill/skill.component';
 import {MatIconModule} from "@angular/material/icon";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 
 
@@ -34,10 +35,11 @@ import {MatIconModule} from "@angular/material/icon";
     EditprofileComponent,
     EducationComponent,
     ExperienceComponent,
-    SkillsComponent,
+    SkillComponent,
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
